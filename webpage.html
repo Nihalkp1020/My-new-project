@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Shopping Assistant</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #1e90ff;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .search-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .search-section input[type="text"] {
+      padding: 0.8rem;
+      font-size: 1rem;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .recommended-items {
+      margin-bottom: 3rem;
+    }
+
+    .recommended-items h2 {
+      margin-bottom: 1rem;
+    }
+
+    .item-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .item {
+      background-color: white;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .chatbot {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .chatbot h2 {
+      margin-bottom: 1rem;
+    }
+
+    .chat-window {
+      height: 150px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      background-color: #f9f9f9;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .chat-input button {
+      padding: 0.5rem 1rem;
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .chat-input button:hover {
+      background-color: #0e70d1;
+    }
+    .item {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: left;
+  gap: 1rem;
+}
+
+.item img {
+  width: 100px;
+  height: auto;
+  border-radius: 6px;
+}
+
+.item-details {
+  flex: 1;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI Shopping Assistant</h1>
+    <p>Your smart companion for finding the best deals and products!</p>
+  </header>
+
+  <main>
+    <section class="search-section">
+      <input type="text" placeholder="Search for products..." />
+    </section>
+
+    <section class="recommended-items">
+      <h2>Compare the prices</h2>
+      <div class="item-grid">
+        <div class="item">
+          <h3>Wireless Earbuds</h3>
+          
+          <img src="wireless-earbuds-001-6792869accae0.jpg" alt="Wireless earbuds" style="width: 105px; height: auto;">
+
+        </div>
+        <div class="item">
+          <h3>Smartwatch</h3>
+          
+          <img src="smartwatches.jpg" alt="Wireless earbuds" style="width: 105px; height: auto;">
+        </div>
+        <div class="item">
+          <h3>Portable Charger</h3>
+          
+          <img src="portable chargers.jpg" alt="Wireless earbuds" style="width: 105px; height: auto;">
+        </div>
+      </div>
+    </section>
+
+    <section class="chatbot">
+      <h2>Ask the AI Assistant</h2>
+      <div class="chat-window" id="chatWindow">
+        <p><strong>AI:</strong> Hi! What are you looking for today?</p>
+      </div>
+      <div class="chat-input">
+        <input type="text" placeholder="Type your message..." id="userInput"/>
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const chatWindow = document.getElementById('chatWindow');
+      const message = input.value.trim();
+
+      if (message) {
+        const userMsg = document.createElement('p');
+        userMsg.innerHTML = `<strong>You:</strong> ${message}`;
+        chatWindow.appendChild(userMsg);
+        
+        // Placeholder AI response
+        const aiMsg = document.createElement('p');
+        aiMsg.innerHTML = `<strong>AI:</strong> Let me find something great for "${message}"...`;
+        chatWindow.appendChild(aiMsg);
+
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+        input.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
